@@ -101,7 +101,13 @@ const AccountValidationForm = ({
   const canShowPaymentSavingForm =
     accountResponse &&
     accountResponse.status === "200" &&
-    parseFloat(accountResponse.extraData?.AvailableBalance) > 0;
+    parseFloat(accountResponse.extraData?.AvailableBalance) > 0 &&
+    totalOutstandingFee > 0 &&
+    totalOutstandingFee <
+      parseFloat(accountResponse.extraData?.["AvailableBalance"]);
+
+  const availableBalance =
+    parseFloat(accountResponse?.extraData?.["AvailableBalance"]) || 0;
 
   return (
     <div>
@@ -126,14 +132,14 @@ const AccountValidationForm = ({
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white rounded-md p-3 w-32"
+                className="bg-blue text-white rounded-md p-3 w-32"
               >
-                Validate Account
+                Validate
               </button>
               <button
                 type="button"
                 onClick={handleClear}
-                className="bg-red-500 text-white rounded-md p-3 w-32"
+                className="bg-red text-white rounded-md p-3 w-32"
               >
                 Clear
               </button>
@@ -142,13 +148,19 @@ const AccountValidationForm = ({
         </form>
       )}
       {error && <p className="error">{error}</p>}
+
       {accountResponse && (
         <div className="text-left text-md font-bold mt-5 text-dark-eval-1">
           <p>Customer Name: {accountResponse.extraData["Customer Name"]}</p>
           <p>Account Number: {accountResponse.extraData["Account Number"]}</p>
           <p>Phone Number: {accountResponse.extraData["Phone Number"]}</p>
           <p>
-            Available Balance: {accountResponse.extraData["AvailableBalance"]}
+            Available Balance: {availableBalance.toFixed(2)}
+            {totalOutstandingFee >= availableBalance ? (
+              <span className="italic text-red"> - Insufficient Balance </span>
+            ) : (
+              ""
+            )}
           </p>
         </div>
       )}
@@ -162,10 +174,10 @@ const AccountValidationForm = ({
             studentFullName,
             phoneNumber: accountResponse.extraData["Phone Number"],
             transactionId,
-            months, 
-            amounts, 
-            grade, 
-            school, 
+            months,
+            amounts,
+            grade,
+            school,
           }}
           onClear={handleClear}
         />

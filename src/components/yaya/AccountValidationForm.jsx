@@ -92,7 +92,11 @@ const AccountValidationForm = ({ billId, totalDue, accountName, onClear }) => {
     accountResponse &&
     accountResponse.status === "200" &&
     parseFloat(accountResponse.extraData?.["AvailableBalance"]) > 5 &&
+    totalDue > 0 &&
     totalDue < parseFloat(accountResponse.extraData?.["AvailableBalance"]);
+
+  const availableBalance =
+    parseFloat(accountResponse?.extraData?.["AvailableBalance"]) || 0;
 
   return (
     <div>
@@ -139,7 +143,12 @@ const AccountValidationForm = ({ billId, totalDue, accountName, onClear }) => {
           <p>Account Number: {accountResponse.extraData["Account Number"]}</p>
           <p>Phone Number: {accountResponse.extraData["Phone Number"]}</p>
           <p>
-            Available Balance: {accountResponse.extraData["AvailableBalance"]}
+            Available Balance: {availableBalance.toFixed(2)}
+            {totalDue >= availableBalance ? (
+              <span className="italic text-red"> - Insufficient Balance </span>
+            ) : (
+              ""
+            )}
           </p>
         </div>
       )}

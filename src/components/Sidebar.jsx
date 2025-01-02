@@ -43,7 +43,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                 to="/dashboard"
                 className={`flex items-center p-2 rounded transition-all duration-300 ${
                   isActive("/dashboard")
-                    ? "text-yellow bg-blue-500"
+                    ? "text-yellow"
                     : "text-white hover:bg-yellow hover:bg-opacity-20"
                 }`}
               >
@@ -70,7 +70,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                 onClick={togglePayment}
                 className={`flex items-center p-2 rounded transition-all duration-300 ${
                   isActive("#")
-                    ? "text-yellow bg-blue-500"
+                    ? "text-yellow "
                     : "text-white hover:bg-yellow hover:bg-opacity-20"
                 }`}
               >
@@ -114,7 +114,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                     to="/yaya"
                     className={`flex items-center block p-2 rounded font-semibold transition-all duration-300 ${
                       isActive("/yaya")
-                        ? "text-yellow bg-blue-500"
+                        ? "text-yellow "
                         : "text-white hover:bg-yellow hover:bg-opacity-20"
                     }`}
                   >
@@ -142,7 +142,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                     to="/sekela"
                     className={`flex items-center block p-2 rounded font-semibold transition-all duration-300 ${
                       isActive("/sekela")
-                        ? "text-yellow bg-blue-500"
+                        ? "text-yellow "
                         : "text-white hover:bg-yellow hover:bg-opacity-20"
                     }`}
                   >
@@ -169,7 +169,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                   to="/supervision"
                   className={`flex items-center p-2 rounded transition-all duration-300 ${
                     isActive("/supervision")
-                      ? "text-yellow bg-blue-500"
+                      ? "text-yellow"
                       : "text-white hover:bg-yellow hover:bg-opacity-20"
                   }`}
                 >
@@ -198,7 +198,7 @@ const Sidebar = ({ isOpen, toggleSidebar, roleId }) => {
                 to="/payment-report"
                 className={`flex items-center block p-2 rounded transition-all duration-300 ${
                   isActive("/payment-report")
-                    ? "text-yellow bg-blue-500"
+                    ? "text-yellow"
                     : "text-white hover:bg-yellow hover:bg-opacity-20"
                 }`}
               >

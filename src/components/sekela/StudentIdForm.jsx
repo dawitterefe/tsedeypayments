@@ -95,14 +95,14 @@ const StudentIdForm = () => {
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white rounded-md p-3 w-32"
+                className="bg-blue text-white rounded-md p-3 w-32"
               >
                 Submit
               </button>
               <button
                 type="button"
                 onClick={handleClear}
-                className="bg-red-500 text-white rounded-md p-3 w-32"
+                className="bg-red text-white rounded-md p-3 w-32"
               >
                 Clear
               </button>
@@ -120,7 +120,7 @@ const StudentIdForm = () => {
         </div>
       )}
 
-      {isStudentValidated && (
+      {isStudentValidated && totalOutstandingFee > 0 ? (
         <AccountValidationForm
           studentId={studentId}
           totalOutstandingFee={totalOutstandingFee}
@@ -132,7 +132,11 @@ const StudentIdForm = () => {
           school={school}
           onClear={handleClear}
         />
-      )}
+      ) : isStudentValidated && totalOutstandingFee === 0 ? (
+        <p className="mt-5 text-green1 italic text-xl font-bold">
+          Bill is already paid.
+        </p>
+      ) : null}
     </div>
   );
 };

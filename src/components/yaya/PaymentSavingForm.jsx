@@ -108,9 +108,9 @@ const PaymentSavingForm = ({ accountDetails, totalDue, onClear }) => {
         </div>
       )}
       {saveError && <p className="error text-red">{saveError}</p>}
-      <p className="mt-1 font-xs text-dark-eval-2">
+      {/* <p className="mt-1 font-xs text-dark-eval-2">
         Total Due Amount: {totalDue}
-      </p>
+      </p> */}
     </div>
   );
 };
